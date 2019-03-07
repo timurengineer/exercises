@@ -17,10 +17,7 @@
     "url": "https://github.com/timurengineer/exercises/issues"
   },
   "homepage": "https://github.com/timurengineer/exercises#readme",
-  "dependencies": {
-    "express": "^4.16.4",
-    "nodemon": "^1.18.10"
-  },
+  "dependencies": {},
   "devDependencies": {
     "jest": "^24.1.0"
   }
