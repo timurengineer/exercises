@@ -40,7 +40,25 @@ const selectionSort = (input) => {
   return result
 }
 
+const insertionSort = (input) => {
+  const result = input.slice()
+
+  for (let i = 1; i < result.length; i++) {
+    const current = result[i]
+    let j = null
+
+    for (j = i - 1; j >= 0 && result[j] > current; j--) {
+      result[j + 1] = result[j]
+    }
+
+    result[j + 1] = current
+  }
+
+  return result
+}
+
 module.exports = {
   bubbleSort,
   selectionSort,
+  insertionSort,
 }
