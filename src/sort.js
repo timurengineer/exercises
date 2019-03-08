@@ -57,8 +57,55 @@ const insertionSort = (input) => {
   return result
 }
 
+const splitInHalf = (array) => {
+  const mid = Math.floor(array.length / 2)
+
+  return {
+    left: array.slice(0, mid),
+    right: array.slice(mid)
+  }
+}
+
+const mergeArrays = (left, right) => {
+  const result = []
+  const resultLength = left.length + right.length
+  let leftIndex = 0
+  let rightIndex = 0
+
+  for (let i = 0; i < resultLength; i++) {
+    if (leftIndex >= left.length) {
+      result.push(right[rightIndex])
+      rightIndex++
+    } else if (rightIndex >= right.length) {
+      result.push(left[leftIndex])
+      leftIndex++
+    } else if (left[leftIndex] <= right[rightIndex]) {
+      result.push(left[leftIndex])
+      leftIndex++
+    } else {
+      result.push(right[rightIndex])
+      rightIndex++
+    }
+  }
+
+  return result
+}
+
+const mergeSort = (input) => {
+  if (input.length < 2) {
+    return input
+  }
+
+  const { left, right } = splitInHalf(input)
+
+  return mergeArrays(mergeSort(left), mergeSort(right))
+}
+
 module.exports = {
   bubbleSort,
   selectionSort,
   insertionSort,
+  mergeSort,
+  splitInHalf,
+  mergeArrays,
 }
