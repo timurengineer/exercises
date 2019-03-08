@@ -1,5 +1,9 @@
 # Exercises
 
+## Prerequisites
+
+- Node.js 10+ (https://nodejs.org/en/download/package-manager/)
+
 ## Quick Start
 
 ```
