@@ -91,20 +91,41 @@ const mergeArrays = (left, right) => {
   return result
 }
 
-const mergeSort = (input) => {
+const mergeSortRecursive = (input) => {
   if (input.length < 2) {
     return input
   }
 
   const { left, right } = splitInHalf(input)
 
-  return mergeArrays(mergeSort(left), mergeSort(right))
+  return mergeArrays(mergeSortRecursive(left), mergeSortRecursive(right))
+}
+
+const mergeSort = (input) => {
+  let result = input.map(item => [item])
+
+  while (result.length > 1) {
+    const temp = []
+
+    for (let j = 0; j < result.length; j += 2) {
+      if (j === result.length - 1) {
+        temp.push(result[j])
+      } else {
+        temp.push(mergeArrays(result[j], result[j + 1]))
+      }
+    }
+
+    result = temp
+  }
+
+  return result[0]
 }
 
 module.exports = {
   bubbleSort,
   selectionSort,
   insertionSort,
+  mergeSortRecursive,
   mergeSort,
   splitInHalf,
   mergeArrays,
