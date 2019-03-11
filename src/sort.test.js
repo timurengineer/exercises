@@ -6,6 +6,7 @@ const {
   mergeArrays,
   mergeSortRecursive,
   mergeSort,
+  quickSort,
 } = require('./sort')
 
 describe('bubbleSort()', () => {
@@ -71,5 +72,19 @@ describe('mergeSort()', () => {
     const sample = [8,2,4,5,7,3,1,6]
     
     expect(mergeSort(sample)).toEqual([1,2,3,4,5,6,7,8])
+  })
+})
+
+describe('quickSort()', () => {
+  it('sorts an array of ints in asc order, odd length', () => {
+    const sample = [8,2,9,4,5,7,3,1,6]
+    
+    expect(quickSort(sample)).toEqual([1,2,3,4,5,6,7,8,9])
+  })
+
+  it('sorts an array of ints in asc order, even length', () => {
+    const sample = [8,2,4,5,7,3,1,6]
+    
+    expect(quickSort(sample)).toEqual([1,2,3,4,5,6,7,8])
   })
 })

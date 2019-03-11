@@ -121,6 +121,33 @@ const mergeSort = (input) => {
   return result[0]
 }
 
+const partition = (input, pivot) => {
+  const left = []
+  const right = []
+
+  for (let i = 0; i < input.length; i++) {
+    if (input[i] <= pivot) {
+      left.push(input[i])
+    } else {
+      right.push(input[i])
+    }
+  }
+
+  return { left, right }
+}
+
+const quickSort = (input) => {
+  if (input.length < 2) {
+    return input
+  }
+
+  const arr = input.slice()
+  const pivot = arr.pop()
+  const { left, right } = partition(arr, pivot)
+
+  return [...quickSort(left), pivot, ...quickSort(right)]
+}
+
 module.exports = {
   bubbleSort,
   selectionSort,
@@ -129,4 +156,5 @@ module.exports = {
   mergeSort,
   splitInHalf,
   mergeArrays,
+  quickSort,
 }
